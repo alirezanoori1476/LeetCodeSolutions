@@ -1,7 +1,7 @@
 ﻿
-var nums1 = new[] { 0, 1 };
+var nums1 = new[] { 0, 0, 1, 1, 1, 1, 2, 3, 3 };
 
-var result = RemoveDuplicates(nums1);
+var result = RemoveDuplicates2(nums1);
 
 Console.WriteLine(result);
 Console.ReadLine();
@@ -99,5 +99,26 @@ int RemoveDuplicates(int[] nums)
     return k;
 }
 
+
+#endregion
+
+#region Question number 80 - Remove Duplicates from Sorted Array II
+
+int RemoveDuplicates2(int[] nums)
+{
+    if (nums.Length <= 2) return nums.Length;
+
+    var writeIndex = 2;
+    for (var readIndex = 2; readIndex < nums.Length; readIndex++)
+    {
+        if (nums[readIndex] == nums[writeIndex - 2])
+            continue;
+
+        nums[writeIndex] = nums[readIndex];
+        writeIndex++;
+    }
+
+    return writeIndex;
+}
 
 #endregion
