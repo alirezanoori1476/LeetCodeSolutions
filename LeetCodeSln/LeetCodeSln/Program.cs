@@ -1,8 +1,7 @@
 ﻿
-var nums1 = new[] { 3, 2, 2, 3 };
-var valueToCompare = 3;
+var nums1 = new[] { 0, 1 };
 
-var result = RemoveElement(nums1, valueToCompare);
+var result = RemoveDuplicates(nums1);
 
 Console.WriteLine(result);
 Console.ReadLine();
@@ -61,7 +60,6 @@ int[] MergeSortedArraySecondApproach(int[] firstList, int[] secondList) // Secon
 
 #endregion
 
-
 #region Question number 27 - Remove Element 
 
 int RemoveElement(int[] nums, int val)
@@ -77,5 +75,29 @@ int RemoveElement(int[] nums, int val)
     }
     return k;
 }
+
+#endregion
+
+#region Question number 26 - Remove Duplicates from Sorted Array
+
+int RemoveDuplicates(int[] nums)
+{
+    if (nums.Length == 0)
+        return 0;
+
+    var k = 1;
+
+    for (var i = 1; i < nums.Length; i++)
+    {
+        if (nums[i] == nums[k])
+            continue;
+
+        k++;
+        nums[k] = nums[i];
+    }
+
+    return k;
+}
+
 
 #endregion
