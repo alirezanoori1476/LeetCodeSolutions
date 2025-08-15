@@ -1,7 +1,7 @@
 ﻿
-var nums1 = new[] { 0, 0, 1, 1, 1, 1, 2, 3, 3 };
+var nums1 = new[] { 2, 2, 1, 1, 1, 2, 2 };
 
-var result = RemoveDuplicates2(nums1);
+var result = MajorityElement(nums1);
 
 Console.WriteLine(result);
 Console.ReadLine();
@@ -119,6 +119,26 @@ int RemoveDuplicates2(int[] nums)
     }
 
     return writeIndex;
+}
+
+#endregion
+
+#region number 169 - Majority Element
+
+int MajorityElement(int[] nums)
+{
+    var candidate = 0;
+    var count = 0;
+
+    foreach (var num in nums)
+    {
+        if (count == 0)
+            candidate = num;
+
+        count += (num == candidate) ? 1 : -1;
+    }
+
+    return candidate;
 }
 
 #endregion
